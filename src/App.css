@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+.profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  object-fit: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.home_display_image {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: url("https://stimg.cardekho.com/images/carexteriorimages/930x620/Bentley/Flying-Spur/7776/1645012163948/front-left-side-47.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
 }
 
-.App-link {
-  color: #61dafb;
+.leaflet-container {
+  height: 100% !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.location-name {
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.location-location {
+  font-size: 13px;
+  font-weight: 600;
+  color: #676767;
+}
+
+.location-description {
+  font-size: 16px;
+
+}
+
+.locations-container {
+  background-color: #efefef;
+  border-radius: 6px;
+  padding: 0px !important;
+
+}
+
+.parkingdetailtitle {
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.parkingdetaillocation {
+  font-size: 13px;
+  font-weight: 600;
+  color: #676767;
+
+}
+
+.parkingdetaildescription {
+  font-size: 15px;
+  font-weight: 400;
+
+}
+
+.parkinginfo {
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.parkingbtn {
+  background-color: blue;
+}
+
+.bookingcontainer {
+  background-color: #f5f5f5;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.bookedBy {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
+}
+
+.bookedticketId {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+.bookedparkingId {
+  font-size: 14px;
+  font-weight: 600;
+  color: #343434;
+}
+
+.bookingclosed {
+  color: green;
+}
+
+.bookingoccupied {
+  color: red;
+}
+
+
+.bookingparkingstatus {
+  font-size: 14px;
+  font-weight: 600;
+  color: #343434;
+}
+
+.bookingparkingstatuspaid {
+  font-size: 14px;
+  font-weight: 700;
+  color: green;
+}
+
+.bookingparkingstatusdue {
+  color: red;
+}
+
+
+
+.nav-link>a {
+  text-decoration: none;
+  color: #222;
 }
