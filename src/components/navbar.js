@@ -11,11 +11,13 @@ import { googleLogout } from '@react-oauth/google';
 import axios from 'axios';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert2';
 export default function NavbarContainer() {
 
     const [userProfile, setProfile] = useState(JSON.parse(localStorage.getItem("loginInfo")));
 
+    let navigate = useNavigate();
 
 
     const responseGoogle = (response) => {
@@ -23,7 +25,22 @@ export default function NavbarContainer() {
         axios.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.credential}`).then((response) => {
             localStorage.setItem("loginInfo", JSON.stringify(response.data));
             setProfile(response.data);
+            window.location.reload()
         })
+    }
+    const onLogout = (response) => {
+        googleLogout();
+        navigate("/login")
+
+                            localStorage.clear();
+                            window.location.reload()
+
+                            swal(
+                                'Logged out!',
+                                'log out successfully.',
+                                'success'
+                              )
+
     }
     return <Navbar bg="light" expand="lg" sticky='top' top="0">
         <Container>
@@ -36,7 +53,8 @@ export default function NavbarContainer() {
                     <Nav.Link><NavLink to="/"> Home </NavLink></Nav.Link>
                     <Nav.Link><NavLink to="/places">All Places</NavLink></Nav.Link>
                 </Nav>
-                <Nav>
+                    <Nav className="ml-auto">
+                    {userProfile == null ? <Nav.Link><NavLink to="/login"> Login </NavLink></Nav.Link> : <>
                     <NavDropdown title={
                         (userProfile == null) ?
                             < GoogleLogin
@@ -53,12 +71,16 @@ export default function NavbarContainer() {
                             <Nav.Link> <NavLink to="/bookings"> View Bookings</NavLink></Nav.Link>
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        {/* <NavDropdown.Item onClick={() => {
-                            googleLogout();
-                            localStorage.clear();
-                        }}>Logout</NavDropdown.Item> */}
+                        <NavDropdown.Item onClick={() => {
+                            onLogout()
+                        }}>Logout</NavDropdown.Item>
                     </NavDropdown>
-                </Nav>
+                            </>}
+
+
+                    </Nav>
+                    
+                
             </Navbar.Collapse>
         </Container>
     </Navbar >

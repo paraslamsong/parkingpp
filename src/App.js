@@ -14,6 +14,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import SearchResultPage from './pages/search_result_page/search_result_page';
 import DetailPage from './pages/detail_page/detail_page';
 import BookingsPage from './pages/bookings_page/bookings_page';
+import Login from './pages/login_page/login';
+import Registration from './pages/login_page/registration';
 
 function App() {
 
@@ -28,9 +30,23 @@ function App() {
           <Route path="/places" element={<SearchResultPage />} />
           <Route path="/place" element={<DetailPage />} />
           <Route path="/bookings" element={<BookingsPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </BrowserRouter>
+      <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5" style={{position: 'fixed',
+      left: 0,
+      bottom: 0,
+    background: '#4c56af',
+      width:'100%'}}>
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2020. All rights reserved.
+    </div>
+
+    </div>
     </GoogleOAuthProvider>
+    
   );
 }
 
