@@ -9,13 +9,18 @@ import parkinglogin from '../assets/parkinglogo.png';
 import { googleClientId } from '../utils/constants';
 import { googleLogout } from '@react-oauth/google';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert2';
 export default function NavbarContainer() {
-
     const [userProfile, setProfile] = useState(JSON.parse(localStorage.getItem("loginInfo")));
+
+    useEffect(() => {
+        setProfile(JSON.parse(localStorage.getItem("loginInfo")))
+    }, [localStorage.getItem("loginInfo")])
+
+    console.log(userProfile)
 
     let navigate = useNavigate();
 
@@ -56,16 +61,16 @@ export default function NavbarContainer() {
                     <Nav className="ml-auto">
                     {userProfile == null ? <Nav.Link><NavLink to="/login"> Login </NavLink></Nav.Link> : <>
                     <NavDropdown title={
-                        (userProfile == null) ?
-                            < GoogleLogin
-                                clientId={googleClientId}
-                                buttonText="Signin with Google"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            /> : <>
-                                {userProfile.name}
-                            </>
+                        // (userProfile == null) ?
+                        //     < GoogleLogin
+                        //         clientId={googleClientId}
+                        //         buttonText="Signin with Google"
+                        //         onSuccess={responseGoogle}
+                        //         onFailure={responseGoogle}
+                        //         cookiePolicy={'single_host_origin'}
+                        //     /> : <>
+                                userProfile.name
+                            // </>
                     } id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">
                             <Nav.Link> <NavLink to="/bookings"> View Bookings</NavLink></Nav.Link>

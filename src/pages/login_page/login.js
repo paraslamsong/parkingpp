@@ -20,29 +20,12 @@ export default function Login() {
         })
           navigate("/")
 
-          window.location.reload()
+          // window.location.reload()
+
+
     }
-    const login = () =>{
-        // console.log(email,password);
-        const auth = getAuth();
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-  console.log(email,password, 'hi')
-  // Signed in 
-    const user = userCredential.user;
-    console.log(user)
-    localStorage.setItem("loginInfo", JSON.stringify(user));
-    // navigate("/")
-console.log('sujk');
-    // window.location.reload()
-    // ...
-  })
-  .catch((error) => {
-    console.log('errr');
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-    }
+  
+    
 
     
     return <div >
@@ -57,7 +40,7 @@ console.log('sujk');
         <form class="login-form">
           <input type="text"  onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
           <input type="password"   onChange={(e) => setPassword(e.target.value)} placeholder="password"/>
-          <button onClick={() => login()}>login</button>
+          <button >login</button>
           <p class="message">Not registered? <a href="/registration">Create an account</a></p>
           < GoogleLogin
                                 clientId={googleClientId}
